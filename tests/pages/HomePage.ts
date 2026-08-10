@@ -7,6 +7,7 @@ export class HomePage {
   readonly menNavLink: Locator;
   readonly searchButton: Locator;
   readonly searchInput: Locator;
+  readonly cookieAcceptButton: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -15,10 +16,19 @@ export class HomePage {
     this.menNavLink = page.getByTestId('men-floor');
     this.searchButton = page.getByRole('button', { name: 'Search' });
     this.searchInput = page.getByTestId('search-input');
+    this.cookieAcceptButton = page.getByRole('button', { name: /accept/i });
   }
 
   async goto() {
     await this.page.goto('/');
+    await this.dismissCookieBannerIfPresent();
+  }
+
+  async dismissCookieBannerIfPresent() {
+    const isVisible = await this.cookieAcceptButton.isVisible({ timeout: 3000 }).catch(() => false);
+    if (isVisible) {
+      await this.cookieAcceptButton.click();
+    }
   }
 
   async verifyNavigationVisible() {

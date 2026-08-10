@@ -17,7 +17,18 @@ sending HTTP requests directly for API tests.
 .
 ├── cucumber.js # Cucumber config: where features/step-definitions live
 ├── features/
-│ ├── ui/
+│ ├── ui/# QA Automation Engineer - Technical Assessment
+
+Framework: **Playwright Test with TypeScript**, using the **Page Object Model (POM)** pattern.
+
+## Chosen targets
+
+| Part | Target | Notes |
+|---|---|---|
+| A - UI | [asos.com](https://www.asos.com) | Publicly accessible shopping site, no login/payment flows touched |
+| B - API | [Swagger Petstore v2](https://petstore.swagger.io/v2) | Public REST API, full CRUD on `/pet`, no auth required |
+
+## Project structure
 │ │ ├── homePage.feature # Test 1: Home Page Verification
 │ │ ├── categoryNavigation.feature # Test 2: Category Navigation (Women + Men)
 │ │ └── search.feature # Test 3: Search Functionality
